@@ -1,0 +1,25 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="view-hubs-wrapper">View Hubs</div>
+  {% if hubs %}
+    <div class="h">Hubs for the selected:- <br>
+                                             State: {{ state }}  <br>
+                                             District: {{ district }}</div><br>
+    <ul>
+      {% for hub in hubs %}
+        <li class="h">{{ hub }}</li><br>
+        <form action="/submit_donation" method="post">
+          <input type="hidden" name="waste_type" value="{{ waste_type }}">
+          <input type="hidden" name="weight" value="{{ weight }}">
+          <input type="hidden" name="state" value="{{ state }}">
+          <input type="hidden" name="district" value="{{ district }}">
+          <input type="hidden" name="hub" value="{{ hub }}">
+          <span><input  type="submit" value="Submit Donation"></span>
+        </form>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <div class="h">No hubs found for the selected State and District.</div>
+  {% endif %}
+  {% endblock %}

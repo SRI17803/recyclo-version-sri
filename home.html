@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fira+Sans&family=Lato:wght@300&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lato:wght@300&family=Source+Code+Pro:wght@300&display=swap');
+        
+        
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        
+        .sidebar{
+            /* background-color: rgb(145, 142, 142); */
+            /* width: 12vw; */
+            margin: 20px 0;
+            height: 100vh;
+            font-family: 'Fira Sans', sans-serif;
+            transition: transform 0.3s ease-in;
+            z-index: 3;
+        }
+        
+        .sidebar nav{
+            padding: 30px;
+        }
+        
+        .sidebar nav li{
+            list-style: none;
+            /* font-size: 20px; */
+            padding: 30px 0;
+        }
+        
+        .sidebar nav li a{
+            text-decoration: none;
+           font-size: 20px;
+           /* padding: 25px 0; */
+           color: white;
+        }
+        
+        .main{
+            width: 87vw;
+        }
+        
+        .main::before{
+          content: "";
+          position: absolute;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+        
+          background-repeat: no-repeat;
+          background-size: cover;
+          filter: blur(2px);
+        }
+        
+        .infoContainer{
+            height: 60vh;
+            width: 87vw;
+            margin: 75px 80px;
+            display: flex;
+            justify-content: space-around;
+            color: rgb(241, 233, 233);
+        }
+        
+        .devInfo{
+            display: flex;
+            justify-content: center;
+            flex-direction: column;
+            font-family: 'Source Code Pro', monospace;
+        }
+        
+        .hello{
+            font-size: 65px;
+        }
+        
+        .name{
+            font-size: 60px;
+            font-weight: bold;
+            font-family: 'Fira Sans', sans-serif;
+            opacity: 0;
+        }
+        
+        .about{
+            font-size: 35px;
+            opacity: 0;
+        }
+        .moreAbout{
+            font-size: 18px;
+            margin-top: 20px;
+            font-family: 'Fira Sans', sans-serif;
+            opacity: 0;
+        }
+        
+        button {
+            padding: 15px 25px;
+            margin-left:40px;
+            border: unset;
+            border-radius: 15px;
+            color: #212121;
+            z-index: 1;
+            background: #e8e8e8;
+            position: relative;
+            font-weight: 1000;
+            font-size: 17px;
+            -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            transition: all 250ms;
+            overflow: hidden;
+           }
+           
+           button::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 100%;
+            width: 0;
+            border-radius: 15px;
+            background-color: #212121;
+            z-index: -1;
+            -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+            transition: all 250ms
+           }
+           
+           button:hover {
+            color: #e8e8e8;
+           }
+           
+           button:hover::before {
+            width: 100%;
+           }
+
+
+        .devPic img{
+            height: 60vh;
+        }
+        
+        .container{
+            display: flex;
+        }
+        
+        
+        .sidebarGo{
+            transform: translate(-443px, 0px);
+            position: absolute;
+        }
+        
+        .hamburger{
+            position: absolute;
+            left: 10px;
+            top: 5px;
+            cursor: pointer;
+            z-index: 3;
+        }
+        
+        /* Animation */
+        .slideLeft{
+            animation: slide-left 1s linear forwards;
+        }
+        
+        @keyframes slide-left{
+            0%{
+                transform: translate(100px);
+                opacity: 0;
+            }
+        
+            100%{
+                transform: translate(0px);
+                opacity: 1;
+            }
+        
+        } 
+        /* home page delay */
+        .name.slideLeft{
+            animation-delay: 0.5s;
+        }
+        
+        .about.slideLeft{
+            animation-delay: 1s;
+        }
+        
+        .moreAbout.slideLeft{
+            animation-delay: 1.5s;
+        }
+        
+        .buttons.slideLeft{
+            animation-delay: 2s;
+        }
+
+          
+          /* .cross{
+        margin-left: 110px;
+        } */
+
+        .background-image-container {
+            width: 200vh;
+            height: 100vh;
+            background-image: url({{ url_for('static', filename='bgmm.jpg') }});
+            background-size: cover;
+        }        
+        body{
+            overflow: hidden;
+        }
+    </style> 
+</head>
+
+<body>
+    <div class="background-image-container"> 
+    {% if username %}
+    <div class="container">
+     <div class="sidebar sidebarGo">
+    <nav>
+        <li><a href="#">Home</a></li>
+        <li><a href="{{ url_for('profile') }}">Account</a></li>
+        <li><a href="{{ url_for('waste_type') }}">Recyclooo</a></li>
+        <li><a href="{{ url_for('logs') }}">Logs</a></li>
+        <li><a href="{{ url_for('redeem') }}">Redeem</a></li>
+        <li><a href="#">About us</a></li>
+        <li><a href="{{ url_for('logout') }}">Logout</a></li>
+    </nav>
+    </div>
+    <div class="main">
+    <div class="hamburger">
+        <img class="ham" src="https://cdn-icons-png.flaticon.com/512/9679/9679166.png" alt="hamb" width="45px">
+        <img class="cross" src="https://cdn-icons-png.flaticon.com/512/5392/5392890.png" alt="cross" width="45px">
+    </div>
+
+    <div class="infoContainer">
+        <div class="devInfo">
+    <div class="name slideLeft">Welcome, {{ name }}!</div><br>
+    <div class="hello slideLeft">Logged in as: {{ name }}</div>
+    <div class="about slideLeft">Your Earnings: {{ coins }}</div>
+</div></div>      </div>
+
+    {% else %}
+    <div class="container">
+         <div class="main">
+              <div class="infoContainer">
+                <div class="devInfo">
+                  <div class="hello slideLeft">Welcome to</div>
+                  <div class="name slideLeft">Recyclo</div>
+                  <div class="about slideLeft">Let's Earn By Recycling!!!</div>
+                  <div class="moreAbout slideLeft">Use Recyclo to collect your recyclables and capture value from waste.</div>
+                  <div class="buttons slideLeft">
+                 <br><a href="{{ url_for('registration') }}"><Button class="btn">Register</Button></a>
+                 <a href="{{ url_for('login') }}"><button class="btn">Login</button></a>
+            </div>
+            </div>
+            </div>
+            </div>
+        </div>
+    </div>
+           
+    {% endif %}
+    </div>
+
+    <script>
+        document.querySelector('.cross').style.display="none";
+        document.querySelector('.hamburger').addEventListener("click", ()=>{
+            document.querySelector('.sidebar').classList.toggle('sidebarGo');
+        
+            if(document.querySelector('.sidebar').classList.contains('sidebarGo')){
+                document.querySelector('.ham').style.display="inline";
+                document.querySelector('.cross').style.display="none";
+            }
+            else{
+                document.querySelector('.cross').style.display="inline";
+                document.querySelector('.ham').style.display="none";
+            }
+        })
+        </script>
+    </body>
+</html>

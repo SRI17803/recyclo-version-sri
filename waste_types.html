@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Waste Donation - Select Waste Type</title>
+    <style>
+        body{
+            
+            margin-top: 50px;
+
+        }
+        .body {
+            padding-top: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        
+        }
+        
+        .category {
+            max-width: 1170px;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            row-gap: 20px;
+        }
+        
+        .category-item {
+            position: relative;
+            min-width: 450px;
+            height: 130px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            overflow: hidden;
+            background: #FFFFFF;
+            border: 1px solid #CDCDCD;
+            border-radius: 3px;
+            text-decoration: none;
+            transition: 0.5s;
+        }
+        
+        .category-item:hover {
+            border: 1px solid #fff0;
+            box-shadow: 3px 3px 20px rgba(50, 50, 50, 0.25);
+            border-radius: 3px;
+        }
+        
+        .category-item-title {
+            font-style: normal;
+            font-weight: 700;
+            font-size: 23px;
+            line-height: 28px;
+            color: #2F3035;
+            padding-left: 20px;
+            padding-top: 50px;
+            margin-right: 70%;
+            
+        }
+        
+        .category-item:hover.title {
+            color: #1C62CD;
+        }
+        
+        .category-item-link {
+            font-size: 14px;
+            padding-left: 300px;
+            padding-bottom: 8px;
+            color: #C4C4C4;
+            
+        }
+        
+        .category-item-link::after {
+            content: url("data:image/svg+xml,%3Csvg width='6' height='9' viewBox='0 0 6 9' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M0.228824 7.88793C-0.0650262 8.13366 -0.0762933 8.54196 0.203658 8.79989C0.48361 9.05782 0.948767 9.06771 1.24262 8.82198C1.24262 8.82198 5.77719 4.97116 5.78955 4.95998C6.07934 4.69388 6.06851 4.27195 5.76535 4.01758L1.24266 0.178763C0.949277 -0.067399 0.484101 -0.0581918 0.203658 0.199327C-0.0767845 0.456847 -0.0662956 0.865161 0.227086 1.11132L3.71295 4.12125C3.94389 4.32066 3.94393 4.67861 3.71304 4.87807L0.228824 7.88793Z' fill='%23C4C4C4'/%3E%3C/svg%3E%0A");
+            margin-left: 3px;
+            transition: 0.5s;
+        }
+        
+        .category-item:hover.category-item-link::after {
+            margin-left: 8px;
+        }
+        
+        .category-item-img {
+            width: 75px;
+            height: 75px;
+            position: absolute;
+            right: 37px;
+            top: 22px
+        }
+        
+        
+        @import url('https://fonts.googleapis.com/css2?family=Poppins&family=Ubuntu:wght@300;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            
+            font-family: 'Ubuntu', sans-serif;
+        }
+        
+        .navbar {
+            background-color: rgb(22, 7, 36);
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            line-height: 5rem;
+        }
+        
+        .left h1 {
+            font-size: 2.5rem;
+            cursor: pointer;
+        }
+        
+        .checkBtn {
+            display: none;
+        }
+        
+        #check {
+            display: none;
+        }
+        
+        .checkBtn {
+            cursor: pointer;
+            font-size: 30px;
+            float: right;
+            color: #ed1e79;
+            line-height: 80px;
+        }
+        
+        .right ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .right ul li a {
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            color: white;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 1s;
+        }
+        
+        .right ul li a:hover {
+            background-color: #fff;
+            border-radius: 7px;
+            color: rgb(22, 7, 36);
+        }
+        
+        @media screen and (max-width:805px) {
+            .list {
+                width: 100%;
+                height: 100vh;
+                background-color: rgb(22, 7, 36);
+                text-align: center;
+                display: flex;
+                flex-direction: column;
+                position: fixed;
+                top: 4rem;
+                left: 100%;
+                transition: all 1s;
+            }
+        
+            #check {
+                display: none;
+            }
+        
+            .checkBtn {
+                display: block;
+            }
+        
+            #check:checked~ul {
+                left: 0%;
+            }
+        
+        }
+        
+        
+        .sign-up-wrapper {
+            margin-left: 180px;
+            cursor: pointer;
+            border: 0;
+            padding: var(--padding-6xs) 241px;
+            background-color: var(--color-black);
+            position: absolute;
+            top: 600px;
+            left: 350px;
+            border-radius: var(--br-6xs);
+            overflow: hidden;
+            display: flex;
+            flex-direction: row;
+            align-items: flex-start;
+            justify-content: flex-start;
+          }
+          input[type="submit"] {
+            border:2px solid rgb(0, 0, 0);
+            padding:5px 20px;
+            font-size:30px;
+            background:linear-gradient(rgb(238, 231, 233),rgb(93, 88, 101)) center/100% 0px no-repeat;
+            transition:0.5s all linear;
+          }
+          input[type="submit"]:hover {
+            background-size:100% 100%;
+          } 
+        
+        
+    </style>
+</head>
+<body>
+ 
+    <form action="/waste" method="post">
+        <label for="waste-type"><center><h1>What do you want to Recycle?</h1></center></label>
+        <div id="waste-type">
+            <div class="body">
+                <div class="category">
+                    <button name="waste_type" value="plastic"><a href="/weight" class="category-item">
+                        <span class="category-item-title">Plastic</span>
+                        <span class="category-item-link" href="#">Select</span>
+                        <img class="category-item-img" src="/static/plastic.png" alt="">
+                    </a></button>
+                    <button name="waste_type" value="paper"><a href="/weight" class="category-item">
+                        <span class="category-item-title">Paper</span>
+                        <span class="category-item-link" href="#">Select</span>
+                        <img class="category-item-img" src="/static/paper.png" alt="">
+                    </a></button>
+                    <button name="waste_type" value="steel"><a href="/weight" class="category-item">
+                        <span class="category-item-title">Steel</span>
+                        <span class="category-item-link" href="#">Select</span>
+                        <img class="category-item-img" src="/static/steel.png" alt="">
+                    </a></button>
+                    <button name="waste_type" value="glass"><a href="/weight" class="category-item">
+                        <span class="category-item-title">Glass</span>
+                        <span class="category-item-link" href="#">Select</span>
+                        <img class="category-item-img" src="/static/glass.png" alt="">
+                    </a></button>
+                    <button name="waste_type" value="aluminium"><a href="/weight" class="category-item">
+                        <span class="category-item-title">Aluminium</span>
+                        <span class="category-item-link" href="#">Select</span>
+                        <img class="category-item-img" src="/static/alu.png" alt="">
+                    </a></button>
+                    <button name="waste_type" value="cloth"><a href="/weight" class="category-item">
+                        <span class="category-item-title">Cloth</span>
+                        <span class="category-item-link" href="#">Select</span>
+                        <img class="category-item-img" src="/static/cloth.png" alt="">
+                    </a></button>
+                </div>
+            </div>
+        </div>
+    </form>
+    
+</body>
+</html>

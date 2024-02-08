@@ -1,0 +1,117 @@
+
+
+{% extends 'base.html' %}
+{% block content %}
+<div class="register">
+  <div class="frame-parent14">
+    <div class="become-an-earner-on-recyclo-wrapper">
+      <div class="become-an-earner">Become an earner on Recyclo</div>
+    </div>
+    <a
+      class="already-an-earner-container"
+      target="_blank"
+      href="{{ url_for('login') }}"
+      id="alreadyAnEarner"
+    >
+      <span>
+        <span class="already-an-earner">Already an earner </span>
+        <span class="span3">?</span>
+      </span>
+      <span class="login-here"> Login here</span>
+    </a>
+  </div>
+  <div class="required-fields-have-an-asteri-wrapper">
+      <div class="required-fields-have">
+        Required fields have an asterisk: *
+      </div>
+    </div>
+{% if error %}
+  <p>{{ error }}</p>
+{% endif %}
+
+<form method="POST" action="{{ url_for('registration') }}" onsubmit="return validateForm()">
+  
+  <div class="frame-parent18">  
+  <label class="email-frame">
+  <label class="email2" for="username">Phone Number*</label>
+  </label>
+  <input class="frame-child9" type="number" id="username" name="username" pattern="\d{10}" title="Phone number must consist of exactly 10 numbers." required><br>
+  </div>
+  
+  <div class="frame-parent16">  
+  <label class="email-frame">
+  <label for="name" class="email2">Name*</label>
+  </label>
+  <input class="frame-child7" type="name" id="name" name="name" required><br>
+  </div>
+   
+  <div class="frame-parent15">  
+  <label class="email-frame">
+  <label for="email" class="email2">Email*</label>
+  </label>
+  <input class="frame-child7" type="email" id="email" name="email" required><br>
+  </div> 
+  
+  <div class="frame-parent17">  
+  <label class="email-frame">
+  <label class="email2" for="password">Password*</label>
+  </label>
+  <input class="frame-child9" type="password" id="password" name="password" maxlength="{15}" minlength="{8}" required><br>
+  </div>
+  
+  <input class="submit_input" type="submit" value="Register">
+  <div class="by-signing-up-you-agree-to-re-wrapper">
+      <div class="by-signing-up-container">
+        <p class="by-signing-up-you-agree-to-re">
+          <span class="by-signing-u">
+            <span class="already-an-earner">By signing up</span>
+          </span>
+          <span class="by-signing-u"> you agree to Recyclo’s</span>
+          <span class="terms-of-use"> <a>Terms of Use</a> </span>
+        </p>
+        <p class="by-signing-up-you-agree-to-re">
+          <span class="terms-of-use">&nbsp;</span>
+        </p>
+        <p class="by-signing-up-you-agree-to-re">
+          <span class="terms-of-use">&nbsp;</span>
+        </p>
+        <p class="by-signing-up-you-agree-to-re">
+          <span class="terms-of-use">&nbsp;</span>
+        </p>
+        <p class="by-signing-up-you-agree-to-re">
+          <span class="terms-of-use">&nbsp;</span>
+        </p>
+      </div>
+    </div>
+</form>
+<br>
+
+</div>
+<script>
+  function validateForm() {
+      var username = document.getElementById("username").value;
+      var email = document.getElementById("email").value;
+      var password = document.getElementById("password").value;
+      var regexUsername = /^\d{10}$/;
+      var regexEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+      var validUsername = regexUsername.test(username);
+      var validEmail = regexEmail.test(email);
+
+      if (!validUsername) {
+          alert("Username must consist of exactly 10 numbers.");
+          return false;
+      }
+      if (!validEmail) {
+          alert("Please enter a valid email address.");
+          return false;
+      }
+      if (password.length < 8) {
+          alert("Password must be at least 8 characters long.");
+          return false;
+      }
+
+      return true;
+  }
+</script>
+
+{% endblock %}

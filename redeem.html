@@ -1,0 +1,30 @@
+
+{% extends 'base.html' %}
+{% block content %}
+<form action="/redeem" method="POST"></form>
+        <div class="container">
+            <div class="coupon-card">
+                <!-- <img src="" class="logo"> -->
+                <h3>Congratulations!!!<br>You've redeemed</h3>
+                <di class="coupon-row">
+                    <span id="cpnCode">Recyclo-2K23</span>
+                    <span id="cpnBtn">Copy</span>
+                </di>
+                <p>Valid Till: 10/10/2023</p>
+                <div class="circle1"></div>
+                <div class="circle2"></div>
+            </div>
+        </div>
+        <script>
+             var cpnBtn = document.getElementById("cpnBtn");
+            var cpnCode = document.getElementById("cpnCode");
+
+            cpnBtn.onclick = function(){
+                navigator.clipboard.writeText(cpnCode.innerHTML);
+                cpnBtn.innerHTML ="COPIED";
+                setTimeout(function(){
+                    cpnBtn.innerHTML="COPY CODE";
+                }, 3000);
+            }
+        </script>
+{% endblock %}

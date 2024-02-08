@@ -1,0 +1,41 @@
+
+{% extends 'base.html' %}
+{% block content %}
+
+ <div class="edit-prof">
+ <div class="user-profile-wrapper">
+   <div class="user-profile">User Profile</div>
+ </div>
+
+ <div class="frame-div">
+     <label class="name-wrapper">
+       <div class="name">Name</div>
+     </label>
+     <div class="frame-child" >{{ user.name }}</div>
+   </div>
+   <div class="frame-parent1">
+     <label class="user-name-wrapper">
+       <div class="user-name">User Name</div>
+     </label>
+     <div class="frame-child">+91 XXXXXXX{{ user.username[-3:] }}</div>
+     </div>
+   <div class="frame-parent2">
+     <label class="gender-wrapper">
+       <div class="user-name">Email</div>
+     </label>
+     <div class="frame-inner">{{ user.email }}
+   </div></div>
+   <div class="frame-parent3">
+     <label class="email-wrapper">
+       <div class="user-name">Gender</div>
+     </label>
+     <div
+       class="frame-input">{{ user.gender }}</div>
+   </div>
+   <div class="edit-profile-wrapper">
+     <div class="edit-profile"><a href="{{ url_for('edit_profile') }}">Edit Profile</a></div>
+   </div>
+
+ </div>
+
+ {% endblock %}

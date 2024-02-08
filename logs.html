@@ -1,0 +1,24 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    <table>
+        <caption><b>User Logs</b></caption>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Action</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for log in logs %}
+                <tr>
+                    <td>{{ log.date }}</td>
+                    <td>{{ log.action }}</td>
+                    <td>{{ log.description }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    {% endblock %}

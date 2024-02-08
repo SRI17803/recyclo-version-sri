@@ -1,0 +1,86 @@
+
+{% extends 'base.html' %}
+{% block content %}
+    <div class="sign-in1">
+        <div class="sign-in-to-recyclo-wrapper">
+          <div class="earning-at-your-container">Login to Recyclo!!!</div>
+        </div>
+    {% if error %}
+        <div class="error">{{ error }}</div>
+    {% endif %}
+    <form method="POST" action="{{ url_for('login') }}" onsubmit="return authenticate()">
+        <div class="frame-parent12">
+            <label for="username" class="phone-number-wrapper">
+              <div class="phone-number">Phone Number*</div>
+            </label>
+            <input
+              class="frame-child5"
+              type="number"
+              type="text" 
+              id="username" 
+              name="username" pattern="\d{10}" 
+              title="Username must consist of exactly 10 numbers." required><br>            
+          </div><br>
+
+        <div class="frame-parent13">
+        <label for="password" class="frame-label">
+          <div class="password-wrapper">
+            <div class="phone-number">Password*</div>
+          </div>
+        </label>
+        <input
+          class="frame-child6"
+          type="password" id="password" name="password" required/>
+      </div>
+               <input class="login_input" type="submit" value="Login">
+    </form>
+
+    <div class="new-to-recyclo-sign-up-wrapper" id="frameContainer4">
+        <div class="new-to-recyclo-container">
+          <span>New to Recyclo?</span>
+          <span class="sign-up"><a href="{{ url_for('registration') }}">Signup</a></span>
+        </div>
+      </div>
+
+    <div class="forgot-password-container">
+        <div class="forgot-password-container1" id="forgotPassword">
+            <a href="{{ url_for('forgot_password') }}">Forgot Password?</a> 
+          <span class="span1"> </span>
+          <span class="span2"></span>
+        </div>
+      </div>
+
+      <div class="earning-at-your-fingertips-wrapper">
+        <div class="earning-at-your-container">
+          <span class="earning-at-your">Earning at your</span>
+          <span> </span>
+          <span>
+            <span class="fingertips">Fingertips!</span>
+          </span>
+        </div>
+      </div>
+
+      <div class="recycl-parent3">
+        <i class="earning-at-your-container">RECYCLO</i>
+        <div class="icon-globe5">
+          <img class="vector-icon3" alt="" src="./public/vector.svg" />
+        </div>
+      </div>
+
+    
+    </div>
+    <script>
+      function authenticate() {
+          var username = document.getElementById("username").value;
+          var password = document.getElementById("password").value;
+          var regexUsername = /^\d{10}$/;
+          var validUsername = regexUsername.test(username);
+          if (!validUsername) {
+              alert("Username must consist of exactly 10 numbers.");
+              return false;
+          }
+
+          return true;
+      }
+  </script>
+  {% endblock %}

@@ -1,0 +1,31 @@
+
+{% extends 'base.html' %}
+{% block content %}
+  <div class="waste-don">
+    <div class="waste-donation-wrapper">
+      <div class="waste-donation">Waste Donation</div>
+    </div>
+  <form action="/weight" method="post">
+
+
+    <div class="frame-parent4">
+      <input type="hidden" name="waste_type" value="{{ waste_type }}">
+      <label for="weight" class="weightkg-wrapper">
+        <div class="weightkg">Weight(kg)*</div>
+      </label>
+      <input id="weight" name="weight"
+        class="frame-child1"
+        type="number"
+        min="{1}"
+        maxlength
+        minlength
+        required
+        autofocus
+      />
+      <br><br>
+    <input class="next_input" type="submit" value="Next">
+  </form>
+  </div>
+  {% endblock %}
+
+
