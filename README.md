@@ -27,7 +27,7 @@ Recyclo is a web application designed to enhance waste management and recycling 
 ![Donation Dashboard](assets/menu.png)
 
 ### 🎟️ Coupon Generation
-![Coupon Page](assets/redeemcodes.jpg)
+![Coupon Page](assets/redeeemcodes.jpg)
 
 ### 🎟️ Database
 ![Database](assets/db.jpg)
